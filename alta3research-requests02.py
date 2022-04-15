@@ -10,7 +10,7 @@ resp = requests.get(URL).json()
 
 question = resp[0]["question"]
 gif = resp[0]["gif"]
-correct_answer = resp[0]["correct_answer"]
+correct_answer = resp[0]["correct_answer"]["answer"]
 incorrect_answers = resp[0]["incorrect_answers"]["answers"]
 answers = []
 for inc_ans in incorrect_answers:            
