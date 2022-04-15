@@ -31,16 +31,16 @@ def getapi():
 def index():
     return render_template("questpost.html", quest = question, answs = answers)
 
-@app.route("/askquestion", methods = ["POST"])
-def askquestion():
+@app.route("/answer", methods = ["POST"])
+def answer():
     getans = request.form.get("ans").capitalize()
     if getans in answers:        
-        return redirect(url_for("getresult", answer = getans))
+        return redirect(url_for("result", answer = getans))
     else:
         return redirect("/") 
 
-@app.route("/getresult/<answer>")
-def getresult(answer):
+@app.route("/result/<answer>")
+def result(answer):
     return render_template("result.html", result = answer,  corrans = correct_answer)
 
 @app.route("/end", methods = ["POST"])
@@ -49,7 +49,7 @@ def end():
     if getans == "go!":
         return redirect(url_for("finale"))
     else:
-        return redirect(url_for("getresult", answer = correct_answer))
+        return redirect(url_for("result", answer = correct_answer))
 
 @app.route("/finale")
 def finale():
