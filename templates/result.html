@@ -2,18 +2,18 @@
 <html>
    <body>
    
-      {% if result == corrans %}
+      {% if result == corrdict["answer"] %}
       <h1>Prepare Ship for Ludicrous Speed!</h1>
-      <img src = "https://y.yarn.co/773c240a-5475-40f6-aa47-e7dc8766386d_text.gif#">
+      <img src = "{{ corrdict['gifs'][0] }}">
       <h2>Ready?</h2>
-      <img src="https://i.imgflip.com/fimzm.gif">
+      <img src="{{ corrdict['gifs'][1] }}">
       <form action = "/end" method = "POST">
         <h2>Type "Go!"</h2>        
         <p><input type = "text" name = "go"></p>
         <p><input type = "submit" value = "submit"></p>
       {% else %}
       <h1>They got away!</h1>
-      <img src="https://th.bing.com/th/id/R.d4cea9a3e4acdc0759f0c3c15139114e?rik=%2bGQ59pUoS53HWQ&riu=http%3a%2f%2ffanfest.com%2fwp-content%2fuploads%2f2017%2f05%2fspaceballs-3.gif&ehk=qg%2f3JwlANXZmY%2f4qr4HsQ%2bIg14ASKv6g6EfAkQ6wKxU%3d&risl=&pid=ImgRaw&r=0">
+      <img src="{{ incgif }}">
       {% endif %}
       
    </body>
