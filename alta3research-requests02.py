@@ -13,8 +13,7 @@ gif = resp[0]["gif"]
 correct_answer = resp[0]["correct_answer"]["answer"]
 incorrect_answers = resp[0]["incorrect_answers"]["answers"]
 answers = []
-for inc_ans in incorrect_answers:            
-    answers.append(inc_ans)
+answers.extend(incorrect_answers)
 answers.append(correct_answer)
 shuffled_answers = answers
 random.shuffle(shuffled_answers)
