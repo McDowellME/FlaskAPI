@@ -32,25 +32,24 @@ def index():
 
 @app.route("/question", methods = ["POST"])
 def question():
-    if request.form.get("ans"):
-        getans = request.form.get("ans").lower()
+    getans = request.form.get("ans").capitalize()
+    if getans in questions[0]["all_answers"]:        
         return redirect(url_for("getresult", answer = getans))
     else:
         return redirect("/") 
 
 @app.route("/getresult/<answer>")
 def getresult(answer):
-    correct_answer = questions[0]["correct_answer"].lower()
+    correct_answer = questions[0]["correct_answer"]
     return render_template("result.html", result = answer,  corrans = correct_answer)
 
 @app.route("/end", methods = ["POST"])
 def end():
-    if request.form.get("go"):
-        getans = request.form.get("go").lower()
-        if getans == "go!":
-            return redirect(url_for("finale"))
+    getans = request.form.get("go").lower()
+    if getans == "go!":
+        return redirect(url_for("finale"))
     else:
-        return redirect("end")
+        return redirect(url_for("getresult", answer = "ludicrous speed"))
 
 @app.route("/finale")
 def finale():
