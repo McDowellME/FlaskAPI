@@ -7,5 +7,5 @@ It has multiple endpoints, some that render html and use jinja2 logic
 
 
 I'm so sorry it's not a throrough Spaceballs API!
-I would love to make this more dynamic, but not too familiar yet with using jinja2 to accomplish that
+It's a little dynamic, but still somewhat hardcoded, so wouldn't apply if other questions were added to the dictionary and used
 I would also like to use radio buttons instead of entering information
