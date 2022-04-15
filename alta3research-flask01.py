@@ -22,8 +22,7 @@ questions = [{
 correct_answer = questions[0]["correct_answer"]["answer"]
 incorrect_answers = questions[0]["incorrect_answers"]["answers"]
 answers = []
-for inc_ans in incorrect_answers:            
-    answers.append(inc_ans)
+answers.extend(incorrect_answers)
 answers.append(correct_answer)
 
 @app.route("/spaceballs-api")
