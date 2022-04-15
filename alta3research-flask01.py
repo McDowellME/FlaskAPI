@@ -14,7 +14,7 @@ app = Flask(__name__)
 questions = [{
     "question" : "The Eagle 5 just got away! What speed should you use to catch them?",
     "gif" : "https://cdn-images-1.medium.com/max/1600/0*arSYWialtHhdLo6h.gif",
-    "correct_answer" : "ludicrous speed",
+    "correct_answer" : "Ludicrous speed",
     "incorrect_answers" : ["Regular speed", "Light speed", "Ridiculous speed" ],
     "all_answers" : ["Regular speed", "Light speed", "Ridiculous speed", "Ludicrous speed"]
 }]
@@ -40,8 +40,7 @@ def question():
 
 @app.route("/getresult/<answer>")
 def getresult(answer):
-    correct_answer = questions[0]["correct_answer"]
-    print(correct_answer)
+    correct_answer = questions[0]["correct_answer"].lower()
     return render_template("result.html", result = answer,  corrans = correct_answer)
 
 @app.route("/end", methods = ["POST"])
