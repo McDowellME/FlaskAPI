@@ -15,13 +15,16 @@ questions = [{
     "question" : "The Eagle 5 just got away! What speed should you use to catch them?",
     "gif" : "https://cdn-images-1.medium.com/max/1600/0*arSYWialtHhdLo6h.gif",
     "correct_answer" : "Ludicrous speed",
-    "incorrect_answers" : ["Regular speed", "Light speed", "Ridiculous speed" ],
-    "all_answers" : ["Regular speed", "Light speed", "Ridiculous speed", "Ludicrous speed"]
+    "incorrect_answers" : ["Regular speed", "Light speed", "Ridiculous speed" ]
 }]
 
 question = questions[0]["question"]
-answers = questions[0]["all_answers"]
 correct_answer = questions[0]["correct_answer"]
+incorrect_answers = questions[0]["incorrect_answers"]
+answers = []
+for inc_ans in incorrect_answers:            
+    answers.append(inc_ans)
+answers.append(correct_answer)
 
 @app.route("/spaceballs-api")
 def getapi():

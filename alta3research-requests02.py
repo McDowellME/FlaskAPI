@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import requests
+import random
 from pprint import pprint
 
 URL = "http://127.0.0.1:2224/spaceballs-api"
@@ -11,7 +12,12 @@ question = resp[0]["question"]
 gif = resp[0]["gif"]
 correct_answer = resp[0]["correct_answer"]
 incorrect_answers = resp[0]["incorrect_answers"]
-all_answers = resp[0]["all_answers"]
+answers = []
+for inc_ans in incorrect_answers:            
+    answers.append(inc_ans)
+answers.append(correct_answer)
+shuffled_answers = answers
+random.shuffle(shuffled_answers)
 
 print(f"Question: {question}")
 print(f"gif: {gif}")
@@ -20,4 +26,4 @@ i = 1
 for inc in incorrect_answers:       
     print(f"Incorrect Answer {i}: {inc}")
     i += 1
-print(f"All Answers: {all_answers}")
+print(f"Shuffled Answers: {shuffled_answers}")
