@@ -19,6 +19,9 @@ questions = [{
     "all_answers" : ["Regular speed", "Light speed", "Ridiculous speed", "Ludicrous speed"]
 }]
 
+question = questions[0]["question"]
+answers = questions[0]["all_answers"]
+correct_answer = questions[0]["correct_answer"]
 
 @app.route("/spaceballs-api")
 def getapi():
@@ -26,21 +29,18 @@ def getapi():
 
 @app.route("/")
 def index():
-    question = questions[0]["question"]
-    answers = questions[0]["all_answers"]
     return render_template("questpost.html", quest = question, answs = answers)
 
-@app.route("/question", methods = ["POST"])
-def question():
+@app.route("/askquestion", methods = ["POST"])
+def askquestion():
     getans = request.form.get("ans").capitalize()
-    if getans in questions[0]["all_answers"]:        
+    if getans in answers:        
         return redirect(url_for("getresult", answer = getans))
     else:
         return redirect("/") 
 
 @app.route("/getresult/<answer>")
 def getresult(answer):
-    correct_answer = questions[0]["correct_answer"]
     return render_template("result.html", result = answer,  corrans = correct_answer)
 
 @app.route("/end", methods = ["POST"])
@@ -49,7 +49,7 @@ def end():
     if getans == "go!":
         return redirect(url_for("finale"))
     else:
-        return redirect(url_for("getresult", answer = "ludicrous speed"))
+        return redirect(url_for("getresult", answer = correct_answer))
 
 @app.route("/finale")
 def finale():
